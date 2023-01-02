@@ -1,20 +1,3 @@
-extern crate autocfg;
-
-use std::env;
-
-fn main() {
-    let ac = autocfg::new();
-
-    // If the "i128" feature is explicity requested, don't bother probing for it.
-    // It will still cause a build error if that was set improperly.
-    if env::var_os("CARGO_FEATURE_I128").is_some() || ac.probe_type("i128") {
-        autocfg::emit("has_i128");
-    }
-
-    ac.emit_expression_cfg(
-        "unsafe { 1f64.to_int_unchecked::<i32>() }",
-        "has_to_int_unchecked",
-    );
-
-    autocfg::rerun_path("build.rs");
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:14cb861026b2493f7b39e0f72ced0ccb95c9a5fd0bdce3158f23a27dac7577e8
+size 511
